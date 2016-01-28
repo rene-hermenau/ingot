@@ -34,7 +34,9 @@ function ingot_maybe_load() {
 		if ( is_admin() ) {
 			include_once( dirname( __FILE__ ) . '/vendor/calderawp/dismissible-notice/src/functions.php' );
 			$message = esc_html__( sprintf( 'Ingot requires PHP version 5.5.0 or later. Current version is %s.', PHP_VERSION ), 'ingot' );
-			echo caldera_warnings_dismissible_notice( $message, true, 'activate_plugins' );
+                        
+                        if(function_exists('caldera_warnings_dismissible_notice') )
+                            echo caldera_warnings_dismissible_notice( $message, true, 'activate_plugins' );
 		}
 
 	}
